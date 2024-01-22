@@ -7,7 +7,7 @@ x=True
 while x:
     p=input("enter your choice from Rock,Paper,Scissor: ")
     c=l[randint(0,2)]
-    if p:
+    if p in l:
         print("Computers Choice is ",c)
     if p==c:
         print("TIE!")
@@ -29,3 +29,4 @@ while x:
     else:
         print("Invalid Choice")
         x=False
+              
