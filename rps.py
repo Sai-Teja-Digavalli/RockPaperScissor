@@ -1,7 +1,6 @@
 # Rock Paper Scissors Game
 from random import randint
 l=["Rock","Paper","Scissor"]
-c=l[randint(0,2)]
 print("Welcome to Rock Paper Scissors Game")
 x=True
 while x:
