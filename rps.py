@@ -1,31 +1,46 @@
-# Rock Paper Scissors Game
-from random import randint
-l=["Rock","Paper","Scissor"]
-print("Welcome to Rock Paper Scissors Game")
-x=True
-while x:
-    p=input("enter your choice from Rock,Paper,Scissor: ")
-    c=l[randint(0,2)]
-    if p in l:
-        print("Computers Choice is ",c)
-    if p==c:
-        print("TIE!")
-    elif p=="Rock":
-        if c=="Scissor":
-            print("You WIN!,",p,"smashes",c)
-        else:
-            print("You LOSE!,",c,"covers",p)
-    elif p=="Paper":
-        if c=="Rock":
-            print("You WIN!,",p,"covers",c)
-        else:
-            print("You LOSE!,",c,"cuts",p)
-    elif p=="Scissor":
-        if c=="Paper":
-            print("You WIN!,",p,"cuts",c)
-        else:
-            print("You LOSE!,",c,"smashes",p)      
+# Rock Paper Scissors Game with Scoreboard
+# Developed by Sai Teja Digavalli
+import random
+
+choices = ["Rock", "Paper", "Scissor"]
+player_score = 0
+computer_score = 0
+
+print("🎮 Welcome to the Rock Paper Scissors Game!")
+
+while True:
+    player_choice = input("Enter your choice (Rock, Paper, Scissor): ").capitalize()
+    computer_choice = choices[random.randint(0,2)]
+    
+    if player_choice not in choices:
+        print("❗ Invalid choice. Please choose Rock, Paper, or Scissor.")
+        continue
+
+    print(f"🧠 Computer's Choice: {computer_choice}")
+
+    if player_choice == computer_choice:
+        print("🤝 It's a TIE!")
+    elif (player_choice == "Rock" and computer_choice == "Scissor") or \
+         (player_choice == "Paper" and computer_choice == "Rock") or \
+         (player_choice == "Scissor" and computer_choice == "Paper"):
+        print(f"🏆 You WIN! {player_choice} beats {computer_choice}")
+        player_score += 1
     else:
-        print("Invalid Choice")
-        x=False
-              
+        print(f"😞 You LOSE! {computer_choice} beats {player_choice}")
+        computer_score += 1
+
+    
+    print(f"📊 Current Score — You: {player_score} | Computer: {computer_score}")
+
+    play_again = input("Play again? (yes/no): ").lower()
+    if play_again != 'yes':
+        print("👋 Final Scores:")
+        print(f"🧑 You: {player_score} | 🤖 Computer: {computer_score}")
+        if player_score > computer_score:
+            print("🏅 Congratulations, you won the game!")
+        elif player_score < computer_score:
+            print("💔 Sorry, the computer won the game!")
+        else:
+            print("🤝 It's a draw!")
+        print("Thanks for playing! Goodbye.")
+        break
